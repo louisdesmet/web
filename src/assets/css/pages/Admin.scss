@@ -1,0 +1,13 @@
+.admin {
+  display: flex;
+  height: 100%;
+  .sidebar {
+    flex: 0 0 250px;
+  }
+  .main {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+  }
+}
+

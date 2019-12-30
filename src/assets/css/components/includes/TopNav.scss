@@ -1,0 +1,33 @@
+.nav {
+  border-bottom: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
+  .navUl {
+    list-style: none;
+    display: flex;
+    li  a {
+      display: block;
+      padding: 22px;
+      text-decoration: none;
+      color: #515151;
+    }
+    .account {
+      position: relative;
+      color: #515151;
+      padding: 22px;
+      ul {
+        display: none;
+        position: absolute;
+        bottom: -41px;
+        left: 12px;
+        list-style: none;
+        border: 1px solid lightgrey;
+        border-top: none;
+        z-index: 2;
+        background: white;
+        li {
+          padding: 12px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+.admin {
+  display: flex;
+  height: 100%;
+  .sidebar {
+    flex: 0 0 250px;
+  }
+  .main {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+    .templates {
+      flex: 1;
+     border-left: 1px solid lightgrey;
+      .templates-months {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+        .month {
+          width: 25%;
+          height: 33.33%;
+          border: 1px solid lightgrey;
+          user-select: none;
+          background: white;
+          z-index: 6;
+          box-sizing: border-box;
+          .header {
+            display: flex;
+            padding: 14px 5px;
+            text-align: center;
+            h2 {
+              font-size: 1.2em;
+              width: 100%;
+
+            }
+          }
+          .week {
+            display: flex;
+            flex-wrap: wrap;
+            div {
+              flex-grow: 1;
+              text-align: center;
+              font-weight: bold;
+              font-size: 0.85em;
+              color: #666666;
+            }
+          }
+          .days {
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 0.8em;
+            div {
+              display: flex;
+              justify-content: center;
+              flex-direction: column;
+              width: 14.2%;
+              height: 28px;
+              text-align: center;
+              box-sizing: border-box;
+            }
+            div:hover {
+              background: #F5F5F7;
+            }
+            .date {
+              border-bottom: 4px solid #2C3E50;
+              background: #F2F2F7;
+            }
+            .extra {
+              color: lightgrey;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

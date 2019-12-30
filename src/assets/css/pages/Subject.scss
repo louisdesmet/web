@@ -1,0 +1,91 @@
+.organization {
+  display: flex;
+  height: 100%;
+  .main {
+    flex-grow: 1;
+    .subject-wrapper {
+      height: 100%;
+      .title {
+        padding: 30px;
+        font-weight: normal;
+        font-size: 1.6em;
+
+        color: #585858;
+      }
+      .tabs {
+        border-bottom: 1px solid lightgrey;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        a {
+          padding: 8px 14px;
+          border-top: 1px solid lightgrey;
+          border-right: 1px solid lightgrey;
+          text-decoration: none;
+          color: black;
+        }
+        a:first-child {
+          border-left: 1px solid lightgrey;
+        }
+      }
+
+      .wrapper {
+        position: relative;
+        display: flex;
+        height: 100%;
+        .general {
+          width: 50%;
+          border-right: 1px solid lightgrey;
+          label {
+            display: block;
+            margin: 0 0 0 2%;
+            padding: 12px 0 8px 0;
+            font-size: 0.9em;
+          }
+          input {
+            display: block;
+            box-sizing: border-box;
+            width: 96%;
+            padding: 10px 7px;
+            margin: 0 2%;
+          }
+          select {
+            display: block;
+            box-sizing: border-box;
+            width: 96%;
+            padding: 10px 7px;
+            margin: 0 2%;
+          }
+          textarea {
+            display: block;
+            box-sizing: border-box;
+            width: 96%;
+            padding: 10px 7px;
+            margin: 0 2%;
+            height: 170px;
+          }
+          .meeting-types {
+            display: flex;
+            border-bottom: 1px solid lightgrey;
+            text-align: center;
+            div {
+              flex-grow: 1;
+              padding: 14px 25px;
+              box-sizing: border-box;
+            }
+            div:not(:last-child) {
+              border-right: 1px solid lightgrey;
+            }
+            div:hover {
+              background: #F2F2F7;
+            }
+            .current {
+              background: #F2F2F7;
+              border-bottom: 4px solid #2C3E50;
+            }
+          }
+        }
+      }
+    }
+  }
+}

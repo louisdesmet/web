@@ -1,0 +1,44 @@
+.admin {
+  display: flex;
+  height: 100%;
+  .sidebar {
+    flex: 0 0 250px;
+  }
+  .main {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+    .templates {
+      flex: 1;
+      border-left: 1px solid lightgrey;
+      .appointments {
+        display: flex;
+        .appointment {
+          width: 25%;
+          border-right: 1px solid lightgrey;
+          border-bottom: 1px solid lightgrey;
+          .date {
+            text-transform: uppercase;
+            color: #666666;
+            margin: 7px 0 7px 7px;
+          }
+          .appointment-wrapper {
+            display: flex;
+            .time {
+              background: #2C3E50;
+              color: white;
+              padding: 11px;
+            }
+            .general {
+              p {
+                padding: 5px 0 5px 7px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

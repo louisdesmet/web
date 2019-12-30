@@ -1,0 +1,151 @@
+.organization {
+  display: flex;
+  height: 100%;
+  .sidebar {
+    flex: 0 0 250px;
+
+    border-right: 1px solid lightgrey;
+    ul {
+      li {
+        display: block;
+        border-left: 5px solid transparent;
+        font-size: 0.97em;
+        a {
+          display: block;
+          padding: 15px 5px;
+          text-decoration: none;
+          color: black;
+        }
+      }
+      li:hover {
+        border-left: 5px solid #2C3E50;
+        background: #F7F7F9;
+      }
+    }
+  }
+  .main {
+    flex-grow: 1;
+    .subjects-wrapper {
+      height: 100%;
+      .title {
+        padding: 30px;
+        font-weight: normal;
+        font-size: 1.6em;
+        border-bottom: 1px solid lightgrey;
+        color: #585858;
+      }
+      .wrapper {
+        position: relative;
+        height: 100%;
+        .tools {
+          margin: 0 0 0 2%;
+          padding: 30px 0 25px 0;
+          display: flex;
+          input {
+            flex: 0 0 70%;
+            padding: 12px;
+          }
+          button {
+            flex-grow: 1;
+            background: #2C3E50;
+            color: white;
+            border: none;
+
+          }
+          .category {
+            border-left: 1px solid lightgrey;
+            margin: 0 2% 0 0;
+          }
+        }
+        .subjects {
+          margin: 0 0 0 2%;
+          div {
+            h2 {
+              padding: 15px 0;
+              color: #E67D72;
+            }
+            ul {
+              display: flex;
+              list-style: none;
+              margin: 0 0 15px 0;
+              li {
+                display: block;
+                a {
+
+                  box-sizing: border-box;
+                  text-decoration: none;
+                  color: black;
+                  display: block;
+                  padding: 30px;
+                  border: 1px solid lightgrey;
+                  margin: 0 2% 0 0;
+                }
+              }
+              li:hover a{
+                background: #2C3E50;
+                color: white;
+              }
+            }
+          }
+        }
+        .modal {
+          width: 50%;
+          height: 100%;
+          display: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: white;
+          padding: 20px 30px 0 30px;
+          border-right: 1px solid lightgrey;
+          div {
+            display: flex;
+            justify-content: space-between;
+            span {
+              padding: 20px 0 20px 20px;
+            }
+            h2 {
+              font-size: 1.2em;
+              padding: 20px 0;
+              font-weight: normal;
+            }
+          }
+          label {
+            display: block;
+            padding: 20px 0 8px 0;
+          }
+          input, textarea, select {
+            padding: 12px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid lightgrey;
+          }
+          textarea {
+            height: 200px;
+          }
+          select {
+            option {
+              padding: 8px;
+            }
+          }
+          button {
+            width: 100%;
+            margin: 25px 0 0 0;
+            background: #2C3E50;
+            padding: 15px;
+            color: white;
+            border: none;
+          }
+        }
+        .display {
+          display: block;
+        }
+      }
+    }
+    .display {
+      display: block;
+    }
+
+  }
+}
+

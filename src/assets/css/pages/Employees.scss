@@ -1,0 +1,124 @@
+.organization {
+  display: flex;
+  height: 100%;
+  .main {
+    flex-grow: 1;
+    .employees-wrapper {
+      height: 100%;
+      .title {
+        padding: 30px;
+        font-weight: normal;
+        font-size: 1.6em;
+        border-bottom: 1px solid lightgrey;
+        color: #585858;
+      }
+      .wrapper {
+        position: relative;
+        height: 100%;
+        .tools {
+          margin: 0 2% 0 2%;
+          padding: 30px 0 0 0;
+          display: flex;
+          input {
+            flex: 0 0 55%;
+            padding: 12px 12px 12px 22px;
+            border: 1px solid lightgrey;
+          }
+          button {
+            flex-grow: 1;
+            background: #2C3E50;
+            color: white;
+            border: none;
+          }
+          div {
+            padding: 15px 22px;
+            border: 1px solid lightgrey;
+            border-left: none;
+          }
+          .category {
+            border-left: 1px solid lightgrey;
+            margin: 0 2% 0 0;
+          }
+        }
+        .employee {
+          display: flex;
+          padding: 15px 22px;
+          border: 1px solid lightgrey;
+          border-top: none;
+          margin: 0 2% 0 2%;
+          justify-content: space-between;
+          text-decoration: none;
+          color: black;
+          p {
+
+            font-size: 0.9em;
+          }
+          .icons {
+            display: flex;
+            div {
+              padding: 0 5px;
+            }
+          }
+
+        }
+
+        .modal {
+          width: 50%;
+          height: 100%;
+          display: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: white;
+          padding: 20px 30px 0 30px;
+          border-right: 1px solid lightgrey;
+          div {
+            display: flex;
+            justify-content: space-between;
+            span {
+              padding: 20px 0 20px 20px;
+            }
+            h2 {
+              font-size: 1.2em;
+              padding: 20px 0;
+              font-weight: normal;
+            }
+          }
+          label {
+            display: block;
+            padding: 20px 0 8px 0;
+          }
+          input, textarea, select {
+            padding: 12px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid lightgrey;
+          }
+          textarea {
+            height: 200px;
+          }
+          select {
+            option {
+              padding: 8px;
+            }
+          }
+          button {
+            width: 100%;
+            margin: 25px 0 0 0;
+            background: #2C3E50;
+            padding: 15px;
+            color: white;
+            border: none;
+          }
+        }
+        .display {
+          display: block;
+        }
+      }
+    }
+    .display {
+      display: block;
+    }
+
+  }
+}

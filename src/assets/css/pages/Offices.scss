@@ -1,0 +1,125 @@
+.organization {
+  display: flex;
+  height: 100%;
+  .main {
+    flex-grow: 1;
+    .offices-wrapper {
+      height: 100%;
+      display: flex;
+      flex-flow: column;
+
+      .title {
+        padding: 30px;
+        font-weight: normal;
+        font-size: 1.6em;
+        border-bottom: 1px solid lightgrey;
+        color: #585858;
+      }
+
+      .wrapper {
+        height: 100%;
+        display: flex;
+        flex: 1;
+
+        .offices-sidebar {
+          border-right: 1px solid lightgrey;
+          width: 35%;
+          height: 100%;
+
+          button {
+            width: 100%;
+            background: #2C3E50;
+            padding: 15px;
+            color: white;
+            border: none;
+          }
+
+          input {
+            padding: 12px;
+            width: 100%;
+            box-sizing: border-box;
+            border: none;
+            border-bottom: 1px solid lightgrey;
+          }
+
+          ul {
+            list-style: none;
+
+            li {
+              padding: 5px 10px 5px 0;
+              color: #515178;
+              font-size: 0.9em;
+              border-left: 5px solid transparent;
+              display: flex;
+
+              p {
+                padding: 3px 0;
+              }
+
+              svg {
+                padding: 20px;
+              }
+            }
+
+            li:hover {
+              border-left: 5px solid #2C3E50;
+              background: #F7F7F9;
+            }
+          }
+        }
+
+        .map-container {
+          width: 65%;
+
+          .map {
+            width: 100%;
+            height: 100%;
+
+            .popup {
+              width: 300px;
+
+              h2, p {
+                margin: 0 0 8px 0;
+              }
+
+              .details {
+                width: 100%;
+                background: #2C3E50;
+                border: none;
+                padding: 10px 0;
+                color: white;
+                margin: 0 0 8px 0;
+              }
+
+              .buttons {
+                display: flex;
+
+                .deactivate {
+                  background: #F5A248;
+                  border: none;
+                  padding: 5px 0;
+                  width: 50%;
+                  color: white;
+                  margin-right: 4px;
+                }
+
+                .delete {
+                  background: #E30613;
+                  border: none;
+                  padding: 8px 0;
+                  width: 50%;
+                  color: white;
+                  margin-left: 4px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .display {
+      display: block;
+    }
+
+  }
+}

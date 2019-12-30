@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}
+
+body {
+  line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+  display:block;
+}
+
+nav ul {
+  list-style:none;
+}
+
+blockquote, q {
+  quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content:'';
+  content:none;
+}
+
+a {
+  margin:0;
+  padding:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color:#ff9;
+  color:#000;
+  text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color:#ff9;
+  color:#000;
+  font-style:italic;
+  font-weight:bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom:1px dotted;
+  cursor:help;
+}
+
+table {
+  border-collapse:collapse;
+  border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display:block;
+  height:1px;
+  border:0;
+  border-top:1px solid #cccccc;
+  margin:1em 0;
+  padding:0;
+}
+
+input, select {
+  vertical-align:middle;
+}
+/*---------------------------------------------------------------*/
+* {
+  font-family: "Fira Sans", sans-serif;
+  margin: 0;
+  padding:0;
+}
+
+button:focus {outline:0;}
+select:focus {outline:0;}
+
+/*---------------------------------------------------------------*/
+
+
+html, body, #root, .container {
+    height: 100%;
+}
+textarea:focus, input:focus{
+  outline: none;
+}
+.login {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .logo {
+    display: block;
+    width: 10em;
+    margin: 0 auto 2em auto;
+    fill: #2C3E50;
+  }
+  .section {
+    width: 19em;
+    margin: 0 auto;
+    label {
+      display: block;
+      margin: 0 0 0.5em 0;
+      font-size: 0.9em;
+    }
+    .wrapper {
+      position: relative;
+      input {
+        display: block;
+        width: 100%;
+        padding: 0.85em 1em 0.85em 2.4em;
+        margin: 0 0 1.2em 0;
+        border: 1px solid #dee3e9;
+        box-sizing: border-box;
+      }
+      svg {
+        position: absolute;
+        top: 13px;
+        left: 12px;
+      }
+    }
+    button {
+      width: 100%;
+      padding: 0.85em 0;
+      margin: 0.5em 0 0 0;
+      background: #2C3E50;
+      color: white;
+      border: none;
+      font-size: 0.9em
+    }
+    a {
+      display: block;
+      margin: 1.2em 0 0 0;
+      text-align: center;
+      color: #4A4A4A;
+      font-size: 0.9em;
+    }
+  }
+}

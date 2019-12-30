@@ -1,0 +1,22 @@
+.sidebar {
+  flex: 0 0 250px;
+
+  border-right: 1px solid lightgrey;
+  ul {
+    li {
+      display: block;
+      border-left: 5px solid transparent;
+      font-size: 0.97em;
+      a {
+        display: block;
+        padding: 15px 5px;
+        text-decoration: none;
+        color: black;
+      }
+    }
+    li:hover {
+      border-left: 5px solid #2C3E50;
+      background: #F7F7F9;
+    }
+  }
+}
