@@ -1,38 +1,42 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
+import { getDate, getDaysInMonth, addMonths, getMonth, getYear, getDay, startOfMonth, isWithinInterval } from 'date-fns';
+
 import Office from "../components/includes/Office";
 import TopNav from "../components/includes/TopNav";
-import '../assets/css/pages/Templates.scss'
-
-const months = ['Januari', 'Februari', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+import '../assets/css/pages/Templates.scss';
+const monthNames = ['Januari', 'Februari', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 export const Templates = (props) => {
 
-  const [items, setItems] = useState([]);
+  const [items] = useState([]);
   const [date] = useState(new Date());
-  const [month, setMonth] = useState(date.getMonth());
-  const [year, setYear] = useState(date.getFullYear());
 
-  const [daysMonths, setDaysMonths] = useState(loadDaysMonths);
-  const [monthsNames, setMonthsNames] = useState(loadMonthsNames);
-  const [years, setYears] = useState(loadYears);
-  const [firstDays, setFirstDays] = useState(loadFirstDays);
+  const [daysMonths] = useState(loadDaysMonths);
+  const [months] = useState(loadMonths);
+  const [years] = useState(loadYears);
+  const [firstDays] = useState(loadFirstDays);
+
+  const [startDay, setStartDay] = useState(null);
+  const [startMonth, setStartMonth] = useState(null);
+  const [endDay, setEndDay] = useState(null);
+  const [endMonth, setEndMonth] = useState(null);
+
 
 
   function loadDaysMonths() {
     let array = [];
     for (let i = 0; i < 12; i++) {
-      let current = new Date();
-      let newDate = new Date(current.setMonth(current.getMonth()+ i));
-      array.push(new Date(newDate.getFullYear(),newDate.getMonth() + 1, 0).getDate());
+      array.push(getDaysInMonth(addMonths(date, i)));
     }
     return array;
   }
 
-  function loadMonthsNames() {
+  function loadMonths() {
     let array = [];
     for (let i = 0; i < 12; i++) {
-      let current = new Date();
-      let newDate = new Date(current.setMonth(current.getMonth()+ i));
-      array.push(months[newDate.getMonth()]);
+      array.push({
+        name: monthNames[getMonth(addMonths(date, i))],
+        number: getMonth(addMonths(date, i))
+      });
     }
     return array;
   }
@@ -40,9 +44,7 @@ export const Templates = (props) => {
   function loadYears() {
     let array = [];
     for (let i = 0; i < 12; i++) {
-      let current = new Date();
-      let newDate = new Date(current.setMonth(current.getMonth()+ i));
-      array.push(newDate.getFullYear());
+      array.push(getYear(addMonths(date, i)));
     }
     return array;
   }
@@ -50,25 +52,45 @@ export const Templates = (props) => {
   function loadFirstDays() {
     let array = [];
     for (let i = 0; i < 12; i++) {
-      let current = new Date();
-      let newDate = new Date(current.setMonth(current.getMonth()+ i));
-      array.push(new Date(newDate.getFullYear() + '-' + (newDate.getMonth() + 1) + '-01').getDay());
+      array.push(getDay(startOfMonth(addMonths(date, i))));
     }
     return array;
   }
 
-  function mouseDown(e) {
-    console.log(e.target.style.display);
-    e.target.style.background = '#A7CAEC';
+  function click(i, index) {
+    if(!startDay && !startMonth) {
+      debugger;
+      setStartDay(i);
+      setStartMonth(index);
+    } else if (!endDay && !endMonth) {
+      debugger;
+      setEndDay(i);
+      setEndMonth(index);
+    }
   }
 
-  let temp = new Date(date.setMonth(date.getMonth()+1));
-  new Date(temp.getFullYear(),temp.getMonth() + 1, 0).getDate()
-
-  function dateClass(i) {
-    if(i === date.getDate() && month === date.getMonth() && year === date.getFullYear()) {
+  function dateClass(i, index) {
+    if(i === getDate(date) && months[index].name === monthNames[getMonth(date)]) {
       return 'date'
     }
+  }
+
+  function isSelected(i, index) {
+    console.log(startMonth);
+    if(startMonth && startDay && endMonth && endDay) {
+      debugger;
+      console.log(new Date(years[index], months[index].number, i));
+      if(isWithinInterval(
+        new Date(years[index], months[index].number, i),
+        {
+          start: new Date(years[startMonth], months[startMonth].number, startDay),
+          end: new Date(years[startMonth], months[endMonth].number, endDay)
+        }
+      )) {
+        debugger;
+      }
+    }
+    return 'selected';
   }
 
   if(items.length === 0) {
@@ -79,21 +101,19 @@ export const Templates = (props) => {
         pre.push(<div key={index + '' + i}></div>);
       }
       for (let i = 1; i <= days; i++) {
-        array.push(<div onMouseDown={mouseDown} className={dateClass(i)} key={(month + i) + '-' + i}>{i}</div>);
+        array.push(<div onClick={() => click(i, index)} className={isSelected(i, index)} key={index + '-' + i}>{i}</div>);
       }
       items.push(pre.concat(array));
     });
-    debugger;
   }
 
   let templates = [];
 
   for (let i = 0; i < 12; i++) {
-    console.log(month);
     templates.push(
       <div className="month" key={i}>
         <div className="header">
-          <h2>{monthsNames[i]} {years[i]}</h2>
+          <h2>{monthNames[i]} {years[i]}</h2>
         </div>
         <div className="week">
           <div>S</div>
@@ -107,14 +127,16 @@ export const Templates = (props) => {
         <div className="days">
           {items[i]}
         </div>
+
       </div>
     );
   }
-
+console.log(startDay);
   return (
     <div className="admin">
       <div className="sidebar">
         <Office/>
+        <div>{startDay}</div>
       </div>
       <div className="main">
         <TopNav/>

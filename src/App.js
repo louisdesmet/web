@@ -20,7 +20,7 @@ import SubjectTranslations from "./pages/SubjectTranslations";
 export const App = ({ getOffices, getSubjects, getSubjectCategories, getCustomers, getContacts, getAppointments }) => {
   const [authTokens, setAuthTokens] = useState();
 
-  if(typeof authTokens === 'undefined' && typeof localStorage.getItem('tokens')  !== 'undefined') {
+  if(authTokens === undefined && localStorage.getItem('tokens')  !== undefined) {
     setAuthTokens(localStorage.getItem('tokens'));
   }
 

@@ -8,29 +8,24 @@ export const TopNav = props => {
   const [icon, setIcon] = useState(faAngleDown);
   const offices = useSelector(state => state.remoteOffices);
   const office = useSelector(state => state.officeSidebar);
-  let officeList;
-  if (offices.data) {
-    officeList = <ul className="offices-tools">
-      {offices.data.map(el => (
-        <li key={el.id} className={(office.id === el.id ? 'currentOffice' : '')}>
-          {el.name}
-        </li>
-      ))}
-    </ul>;
-  }
+
+  const [showOffices, setShowOffices] = useState(false);
+  const officeList = offices.data ? (<ul className="offices-sidebar">
+    {offices.data.map(el => (
+      <li key={el.id} className={(office.id === el.id ? 'currentOffice' : '')}>
+        {el.name}
+      </li>
+    ))}
+  </ul>) : null;
 
   function toggle() {
-    let offices = document.querySelector('.offices-tools');
     if(icon === faAngleDown) {
-
-      offices.style.display = 'block';
+      setShowOffices(true);
       setIcon(faAngleUp);
     } else if(icon === faAngleUp) {
-
-      offices.style.display = 'none';
+      setShowOffices(false);
       setIcon(faAngleDown);
     }
-
   }
 
   return (
@@ -42,7 +37,7 @@ export const TopNav = props => {
           <FontAwesomeIcon icon={icon} color="#939399"/>
         </div>
       </div>
-      {officeList}
+      {showOffices && (officeList)}
     </div>
   );
 };

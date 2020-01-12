@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import Office from "../components/includes/Office";
 import TopNav from "../components/includes/TopNav";
 import '../assets/css/pages/Appointments.scss'
@@ -11,10 +11,8 @@ export const Appointments = (props) => {
 
   const appointments = useSelector(state => state.remoteAppointments);
 
-  let appointmentsList;
-  console.log(appointments);
-  if (appointments.data) {
-    appointmentsList = <div className="appointments"> {
+  const appointmentsList = appointments.data ? (
+    <div className="appointments"> {
       appointments.data.map(appointment =>
         <div className="appointment" key={appointment.id}>
           <p className="date">{days[new Date(appointment.start).getDay()] + ' ' + ("0" + new Date(appointment.start).getDate()).slice(-2) + ' ' + months[new Date(appointment.start).getMonth()] + ' ' + new Date(appointment.start).getFullYear()}</p>
@@ -28,14 +26,12 @@ export const Appointments = (props) => {
               <p>{appointment.customer.first_name + ' ' + appointment.customer.last_name}</p>
             </div>
           </div>
-
-
         </div>
       )
     }
     </div>
-    ;
-  }
+  ) : null;
+
   return (
     <div className="admin">
       <div className="sidebar">

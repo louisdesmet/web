@@ -101,7 +101,6 @@ function rootReducer(state = initialState, action) {
     });
   }
   if (action.type === "APPOINTMENTS_LOADED") {
-    console.log(action.payload);
     let events = []
     action.payload.data.forEach(function (appointment) {
       events.push({

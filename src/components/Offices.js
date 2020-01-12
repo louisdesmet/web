@@ -9,15 +9,14 @@ function mapDispatchToProps(dispatch) {
 /**
  * Hook that alerts clicks outside of the passed ref
  */
-function useOutsideAlerter(ref) {
+function useOutsideAlerter(ref, props) {
   /**
    * Alert if clicked on outside of element
    */
   function handleClickOutside(event) {
 
     if (ref.current && !ref.current.contains(event.target)) {
-      let offices = document.querySelector('.offices');
-      offices.style.display = 'none';
+      props.hide();
     }
   }
 
@@ -31,35 +30,30 @@ function useOutsideAlerter(ref) {
   });
 }
 
-/**
- * Component that alerts if you click outside of it
- */
 function ConnectedOffices(props) {
   const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+  useOutsideAlerter(wrapperRef, props);
 
   function choose(el) {
     props.addOffice(el);
-    let officeEl = document.querySelector('.office-wrapper div');
-    officeEl.style.display = 'none';
+    props.hide();
   }
 
   const offices = useSelector(state => state.remoteOffices);
-  let officeList;
-  if (offices.data) {
-    officeList = <ul>
-      {offices.data.map(el => (
-        <li key={el.id} onClick={() => choose(el)}>
-          {el.name}
-        </li>
-      ))}
-    </ul>;
-  }
+  const officeList = offices.data ? (<ul>
+    {offices.data.map(el => (
+      <li key={el.id} onClick={() => choose(el)}>
+        {el.name}
+      </li>
+    ))}
+  </ul>) : null;
 
   return (
-    <div className="offices" ref={wrapperRef}>
-      {officeList}
-    </div>
+    props.show && (
+      <div className="offices" ref={wrapperRef}>
+        {officeList}
+      </div>
+    )
   );
 }
 

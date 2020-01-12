@@ -1,7 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f45014ae-b9a8-4ac7-a987-af660d7a7a27" name="Default Changelist" comment="" />
+    <list default="true" id="f45014ae-b9a8-4ac7-a987-af660d7a7a27" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/components/Timetable.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/components/Timetable.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/components/includes/Office.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/components/includes/Office.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/components/includes/TopNav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/components/includes/TopNav.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Contacts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contacts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Customers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Customers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Datepicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Datepicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Offices.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Offices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Popup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Subjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Subjects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Timetable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Timetable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/includes/Office.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/includes/Office.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/includes/TopNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/includes/TopNav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Appointments.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Appointments.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Employee.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Employees.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Employees.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Offices.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Offices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Subject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Subject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/SubjectSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SubjectSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/SubjectTranslations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SubjectTranslations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Subjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Subjects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Team.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Team.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Templates.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Templates.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/index.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +67,13 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1TiZsdu3VHPm34wARj5Tq6DY0dR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
@@ -47,19 +84,19 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.2.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\dev\repos\web\src\assets\css\pages" />
-      <recent name="C:\dev\repos\web\src\assets\css" />
-      <recent name="C:\dev\repos\web\src\components\includes" />
-      <recent name="C:\dev\repos\web\src\pages" />
-      <recent name="C:\dev\repos\web\src\assets\img" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\dev\repos\web\src\pages" />
       <recent name="C:\dev\repos\web\src\assets\css\pages" />
       <recent name="C:\dev\repos\web\src\assets\css\components\includes" />
       <recent name="C:\dev\repos\web\src\components\organization" />
       <recent name="C:\dev\repos\web\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\dev\repos\web\src\assets\css\pages" />
+      <recent name="C:\dev\repos\web\src\assets\css" />
+      <recent name="C:\dev\repos\web\src\components\includes" />
+      <recent name="C:\dev\repos\web\src\pages" />
+      <recent name="C:\dev\repos\web\src\assets\img" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -124,22 +161,34 @@
       <workItem from="1577412736556" duration="3457000" />
       <workItem from="1577416210995" duration="2309000" />
       <workItem from="1577456656123" duration="78427000" />
-      <workItem from="1577740088304" duration="287000" />
+      <workItem from="1577740088304" duration="5798000" />
+      <workItem from="1577806787453" duration="1873000" />
+      <workItem from="1578054964066" duration="3000" />
+      <workItem from="1578174812747" duration="3000" />
+      <workItem from="1578249314743" duration="10412000" />
+      <workItem from="1578334467520" duration="6028000" />
+      <workItem from="1578424658657" duration="12130000" />
+      <workItem from="1578592978243" duration="12202000" />
+      <workItem from="1578650078593" duration="54000" />
+      <workItem from="1578658424008" duration="628000" />
+      <workItem from="1578789694485" duration="16018000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/Employees.js</url>
-          <line>68</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

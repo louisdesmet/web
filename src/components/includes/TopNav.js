@@ -11,11 +11,11 @@ export const TopNav = props => {
   }
 
   function account() {
-    let account = document.querySelector('.account ul');
-    account.style.display = 'block';
+    props.setShow();
   }
 
   return (
+
     <div className="nav">
       <ul className="navUl">
         <li><Link to="/admin">Calendar</Link></li>
@@ -26,9 +26,11 @@ export const TopNav = props => {
         <li><a href="https://skedify.zendesk.com/hc/en-us" target="_blank">Help</a></li>
         <li className="account" onClick={account}>
           Account
+          { props.show && (
           <ul>
             <li onClick={logOut}>Log out</li>
           </ul>
+          )}
         </li>
       </ul>
     </div>

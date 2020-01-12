@@ -2,22 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
-function useOutsideAlerter(ref) {
-  /**
-   * Alert if clicked on outside of element
-   */
+function useOutsideAlerter(ref, props) {
   function handleClickOutside(event) {
     if (ref.current && !ref.current.contains(event.target)) {
-      let datepicker = document.querySelector('.datepicker');
-      datepicker.style.display = 'none';
+      props.hide();
     }
   }
-
   useEffect(() => {
-    // Bind the event listener
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleClickOutside);
     };
   });
@@ -27,7 +20,7 @@ const months = ['Januari', 'Februari', 'March', 'April', 'May', 'June', 'July', 
 export default function Datepicker(props) {
 
   const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+  useOutsideAlerter(wrapperRef, props);
 
 
   const [items, setItems] = useState([]);
@@ -105,24 +98,26 @@ export default function Datepicker(props) {
   }
 
   return(
-    <div className="datepicker" ref={wrapperRef}>
-      <div className="header">
-        <h2>{months[month]}, {year}</h2>
-        <FontAwesomeIcon onClick={prev} icon={faAngleLeft} color="#939399"/>
-        <FontAwesomeIcon onClick={next} icon={faAngleRight} color="#939399"/>
+    props.show && (
+      <div className="datepicker" ref={wrapperRef}>
+        <div className="header">
+          <h2>{months[month]}, {year}</h2>
+          <FontAwesomeIcon onClick={prev} icon={faAngleLeft} color="#939399"/>
+          <FontAwesomeIcon onClick={next} icon={faAngleRight} color="#939399"/>
+        </div>
+        <div className="week">
+          <div>S</div>
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
+        </div>
+        <div className="days">
+          {items}
+        </div>
       </div>
-      <div className="week">
-        <div>S</div>
-        <div>M</div>
-        <div>T</div>
-        <div>W</div>
-        <div>T</div>
-        <div>F</div>
-        <div>S</div>
-      </div>
-      <div className="days">
-        {items}
-      </div>
-    </div>
+    )
   );
 }

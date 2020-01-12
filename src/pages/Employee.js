@@ -1,22 +1,20 @@
-import React, {useState, useEffect} from "react";
-import {useSelector} from "react-redux";
-import {faTimes, faUser, faBuilding, faSitemap, faCog} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {BrowserRouter as Router, Link} from "react-router-dom";
-import '../assets/css/pages/Employee.scss';
+import React from "react";
+import {useParams} from "react-router-dom";
 import TopNav from "../components/includes/TopNav";
-import Office from "../components/includes/Office";
-import PrivateRoute from "../PrivateRoute";
 import Sidebar from "../components/includes/Sidebar";
+import {faUser, faBuilding, faSitemap, faCog} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import '../assets/css/pages/Employee.scss';
+import {useSelector} from "react-redux";
 
 export default function Employee(props) {
 
-  const {contact} = props.location.state;
+  const contacts = useSelector(state => state.remoteContacts);
+  const { id } = useParams();
+  const contact = contacts.data ? contacts.data.find(contact => contact.id === parseInt(id)) : null;
 
-  let officesList;
-
-  if (contact.offices) {
-    officesList = <ul> {
+  const officesList = contact.offices ? (
+    <ul> {
       contact.offices.map(office =>
         <li key={office.id}>
           <div>
@@ -31,68 +29,10 @@ export default function Employee(props) {
       )
     }
     </ul>
-    ;
-  }
+  ) : null;
 
-
-
-  function isContact(roles) {
-    let found = null;
-    roles.forEach(function (role) {
-      if(role.name === 'Contact') {
-        found = true;
-      }
-    });
-    if (found) {
-      return found;
-    } else {
-      return false;
-    }
-  }
-
-  function isOfficeManager(roles) {
-
-    let found = null;
-    roles.forEach(function (role) {
-      if(role.name === 'Office manager') {
-        found = true;
-      } else {
-
-      }
-    });
-    if (found) {
-      return found;
-    } else {
-      return false;
-    }
-  }
-
-  function isCentralPlanner(roles) {
-    let found = null;
-    roles.forEach(function (role) {
-      if(role.name === 'Central planner') {
-        found = true;
-      }
-    });
-    if (found) {
-      return found;
-    } else {
-      return false;
-    }
-  }
-
-  function isAdmin(roles) {
-    let found = null;
-    roles.forEach(function (role) {
-      if(role.name === 'Admin') {
-        found = true;
-      }
-    });
-    if (found) {
-      return found;
-    } else {
-      return false;
-    }
+  function isRole(roles, name) {
+    return roles.find(role => role.name === name);
   }
 
   return(
@@ -106,22 +46,22 @@ export default function Employee(props) {
           <div className="wrapper">
             <div className="details">
               <div className="icons">
-                <div className={(isContact(contact.roles) ? 'selected' : '')}>
-                  <FontAwesomeIcon icon={faUser} color={isContact(contact.roles)}/>
+                <div className={(isRole(contact.roles, 'Contact') ? 'selected' : '')}>
+                  <FontAwesomeIcon icon={faUser}/>
                 </div>
-                <div className={(isOfficeManager(contact.roles) ? 'selected' : '')}>
-                  <FontAwesomeIcon icon={faBuilding} color={isOfficeManager(contact.roles)}/>
+                <div className={(isRole(contact.roles, 'Office manager') ? 'selected' : '')}>
+                  <FontAwesomeIcon icon={faBuilding}/>
                 </div>
-                <div className={(isCentralPlanner(contact.roles) ? 'selected' : '')}>
-                  <FontAwesomeIcon icon={faSitemap} color={isCentralPlanner(contact.roles)}/>
+                <div className={(isRole(contact.roles, 'Central planner') ? 'selected' : '')}>
+                  <FontAwesomeIcon icon={faSitemap}/>
                 </div>
-                <div className={(isAdmin(contact.roles) ? 'selected' : '')}>
-                  <FontAwesomeIcon icon={faCog} color={isAdmin(contact.roles)}/>
+                <div className={(isRole(contact.roles, 'Admin') ? 'selected' : '')}>
+                  <FontAwesomeIcon icon={faCog}/>
                 </div>
               </div>
               <div className="general">
                 <label>Email</label>
-                <input value={contact.user.email}/>
+                <input defaultValue={contact.user.email}/>
               </div>
             </div>
             <div className="offices">

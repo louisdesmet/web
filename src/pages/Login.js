@@ -16,16 +16,17 @@ function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setAuthTokens } = useAuth();
+
   let referer;
-  if(typeof props.location.state !== 'undefined') {
+  if(props.location.state !== undefined) {
     referer = props.location.state.referer;
-  } else if(typeof localStorage.getItem('tokens')  !== 'undefined'){
+  } else if(localStorage.getItem('tokens')  !== undefined){
     return <Redirect to='/admin' />;
   }
 
-
   function postLogin(event) {
     event.preventDefault();
+
     axios.post("/login", {
       email,
       password

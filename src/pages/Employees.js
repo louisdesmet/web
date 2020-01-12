@@ -5,7 +5,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Link} from "react-router-dom";
 import '../assets/css/pages/Employees.scss'
 import TopNav from "../components/includes/TopNav";
-import Office from "../components/includes/Office";
 import Sidebar from "../components/includes/Sidebar";
 
 export default function Employees(props) {
@@ -14,18 +13,12 @@ export default function Employees(props) {
   const [newSubjectModal, setNewSubjectModal] = useState(false);
 
   const contacts = useSelector(state => state.remoteContacts);
-  let contactList;
-  if (contacts.data) {
-    console.log(contacts.data);
-    contactList = <div className="employees">
+
+  const contactList = contacts.data ? (
+    <div className="employees">
       {
         contacts.data.map(contact =>
-          <Link key={contact.id} className="employee" to={{
-            pathname: "/employee/"+contact.id,
-            state: {
-              contact: contact
-            }
-          }}>
+          <Link key={contact.id} className="employee" to={"/employee/"+contact.id}>
             <p>{contact.user.name}</p>
             <p>{contact.user.email}</p>
             <div className="icons">
@@ -45,8 +38,8 @@ export default function Employees(props) {
           </Link>
         )
       }
-    </div>;
-  }
+    </div>
+  ) : null;
 
   function isContact(roles) {
     let found = null;

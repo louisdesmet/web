@@ -1,61 +1,29 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import {useSelector} from "react-redux";
-import {
-  faTimes,
-  faUser,
-  faBuilding,
-  faSitemap,
-  faCog,
-  faPhone,
-  faMapMarkerAlt, faCamera
-} from "@fortawesome/free-solid-svg-icons";
+import {faBuilding, faPhone, faMapMarkerAlt, faCamera} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {BrowserRouter as Router, Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import '../assets/css/pages/Subject.scss';
 import TopNav from "../components/includes/TopNav";
-import Office from "../components/includes/Office";
-import PrivateRoute from "../PrivateRoute";
 import Sidebar from "../components/includes/Sidebar";
 
 export default function Subject(props) {
-  const { path } = props.match;
-  const {subject} = props.location.state;
-  const [tab, setTab] = useState('General');
-
-  console.log(subject);
-
+  const subjects = useSelector(state => state.remoteSubjects);
+  const { id } = useParams();
+  const subject = subjects.data ? subjects.data.find(subject => subject.id === parseInt(id)) : null
   const categories = useSelector(state => state.remoteSubjectCategories);
-  let categoryList;
-  if (categories.data) {
-    categoryList = categories.data.map(category => <option key={category.id} value={category.id}>{category.name}</option>);
-  }
+  const categoryList = categories.data ? categories.data.map(category => <option key={category.id} value={category.id}>{category.name}</option>) : null;
   return(
     <div className="organization">
-    <Sidebar/>
-
+      <Sidebar/>
       <div className="main">
         <TopNav/>
         <div className="subject-wrapper">
           <h2 className="title">{subject.name}</h2>
           <div className="tabs">
-            <Link className="subject" to={{
-              pathname: "/subject/"+subject.id,
-              state: {
-                subject: subject
-              }
-            }}>General</Link>
-            <Link className="subject" to={{
-              pathname: "/subject/"+subject.id+'/translations',
-              state: {
-                subject: subject
-              }
-            }}>Translations</Link>
-            <Link className="subject" to={{
-              pathname: "/subject/"+subject.id+'/availability',
-              state: {
-                subject: subject
-              }
-            }}>Scheduling settings</Link>
+            <Link className="subject" to={"/subject/"+subject.id}>General</Link>
+            <Link className="subject" to={"/subject/"+subject.id+'/translations'}>Translations</Link>
+            <Link className="subject" to={"/subject/"+subject.id+'/availability'}>Scheduling settings</Link>
           </div>
           <div className="wrapper">
             <div className="general">

@@ -6,60 +6,46 @@ function mapDispatchToProps(dispatch) {
     addSubject: (payload) => dispatch(addSubject(payload))
   };
 }
-/**
- * Hook that alerts clicks outside of the passed ref
- */
-function useOutsideAlerter(ref) {
-  /**
-   * Alert if clicked on outside of element
-   */
+function useOutsideAlerter(ref, props) {
   function handleClickOutside(event) {
     if (ref.current && !ref.current.contains(event.target)) {
-      let subjects = document.querySelector('.subjects');
-      subjects.style.display = 'none';
+      props.hide();
     }
   }
 
   useEffect(() => {
-    // Bind the event listener
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleClickOutside);
     };
   });
 }
 
-/**
- * Component that alerts if you click outside of it
- */
 function ConnectedSubjects(props) {
 
   const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+  useOutsideAlerter(wrapperRef, props);
 
   function choose(el) {
     props.addSubject(el);
-    let subjectEl = document.querySelector('.subject-wrapper div');
-    subjectEl.style.display = 'none';
+    props.hide();
   }
 
   const subjects = useSelector(state => state.remoteSubjects);
-  let subjectList;
-  if (subjects.data) {
-    subjectList = <ul>
-      {subjects.data.map(el => (
-        <li key={el.id} onClick={() => choose(el)}>
-          {el.name}
-        </li>
-      ))}
-    </ul>;
-  }
+  const subjectList = subjects.data ? (<ul>
+    {subjects.data.map(el => (
+      <li key={el.id} onClick={() => choose(el)}>
+        {el.name}
+      </li>
+    ))}
+  </ul>) : null;
 
   return (
-    <div className="subjects" ref={wrapperRef}>
-      {subjectList}
-    </div>
+    props.show && (
+      <div className="subjects" ref={wrapperRef}>
+        {subjectList}
+      </div>
+    )
   );
 }
 

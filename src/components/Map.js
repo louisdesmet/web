@@ -32,22 +32,19 @@ export default class Mapper extends React.Component {
   render() {
     //onDragEnd={this.invalidateMap()}
 
-    let markers;
-    if(this.props.offices.data) {
-      markers = this.props.offices.data.map(office =>
-        <Marker key={office.id} position={[office.location.lat, office.location.lng]} icon={myIcon}>
-          <Popup className="popup">
-            <h2>{office.name}</h2>
-            <p>{office.location.street + ', ' + office.location.postal} {office.location.city}</p>
-            <button className="details">Show details</button>
-            <div className="buttons">
-              <button className="deactivate">Deactivate</button>
-              <button className="delete">Delete</button>
-            </div>
-          </Popup>
-        </Marker>
-      )
-    }
+    const markers = this.props.offices.data ? (this.props.offices.data.map(office =>
+      <Marker key={office.id} position={[office.location.lat, office.location.lng]} icon={myIcon}>
+        <Popup className="popup">
+          <h2>{office.name}</h2>
+          <p>{office.location.street + ', ' + office.location.postal} {office.location.city}</p>
+          <button className="details">Show details</button>
+          <div className="buttons">
+            <button className="deactivate">Deactivate</button>
+            <button className="delete">Delete</button>
+          </div>
+        </Popup>
+      </Marker>
+    )) : null;
 
     let lat = (this.props.office ? this.props.office.location.lat : 51.505);
     let lng = (this.props.office ? this.props.office.location.lng : -0.09);

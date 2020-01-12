@@ -11,19 +11,16 @@ export const Timetable = props => {
 
   const [start, setStart] = useState('');
   const [end, setEnd] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
 
   const events = useSelector(state => state.events);
 
-
   function select(info) {
-    //let start = new Date(info.startStr);
-    //let end = new Date(info.endStr);
+    setShowPopup(true);
     setStart(info.startStr);
     setEnd(info.endStr);
-
     let element = document.querySelector('.fc-highlight');
     let popup = document.querySelector('.popup');
-    popup.style.display = 'block';
     popup.style.left = ((window.pageXOffset + element.getBoundingClientRect().left) - 60) + 'px';
     popup.style.top = ((window.pageYOffset + element.getBoundingClientRect().top) - 80) + 'px';
   }
@@ -51,7 +48,7 @@ export const Timetable = props => {
         unselectAuto={false}
         height="parent"
       />
-      <Popup start={start} end={end}/>
+      <Popup start={start} end={end} show={showPopup} hide={() => setShowPopup(false)}/>
     </div>
   );
 };

@@ -7,24 +7,15 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-/**
- * Hook that alerts clicks outside of the passed ref
- */
-function useOutsideAlerter(ref) {
-  /**
-   * Alert if clicked on outside of element
-   */
+function useOutsideAlerter(ref, props) {
   function handleClickOutside(event) {
     if (ref.current && !ref.current.contains(event.target)) {
-      let clients = document.querySelector('.clients');
-      clients.style.display = 'none';
+      props.hide();
     }
   }
   useEffect(() => {
-    // Bind the event listener
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleClickOutside);
     };
   });
@@ -33,30 +24,28 @@ function useOutsideAlerter(ref) {
 function ConnectedCustomer(props) {
 
   const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+  useOutsideAlerter(wrapperRef, props);
 
   function choose(el) {
     props.addCustomer(el);
-    let customerEl = document.querySelector('.client-wrapper div');
-    customerEl.style.display = 'none';
+    props.hide();
   }
 
   const customers = useSelector(state => state.remoteCustomers);
-  let customerList;
-  if (customers.data) {
-    customerList = <ul>
-      {customers.data.map(el => (
-        <li key={el.id} onClick={() => choose(el)}>
-          {el.first_name + ' ' + el.last_name}
-        </li>
-      ))}
-    </ul>;
-  }
+  const customerList = customers.data ? (<ul>
+    {customers.data.map(el => (
+      <li key={el.id} onClick={() => choose(el)}>
+        {el.first_name + ' ' + el.last_name}
+      </li>
+    ))}
+  </ul>) : null;
 
   return (
-    <div className="clients" ref={wrapperRef}>
-      {customerList}
-    </div>
+    props.show && (
+      <div className="clients" ref={wrapperRef}>
+        {customerList}
+      </div>
+    )
   );
 }
 
@@ -66,4 +55,3 @@ const Customer = connect(
 )(ConnectedCustomer);
 
 export default Customer;
-
