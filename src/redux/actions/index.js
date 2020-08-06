@@ -1,4 +1,4 @@
-import { ADD_CUSTOMER, ADD_OFFICE, ADD_SUBJECT, ADD_CONTACT } from "../constants/action-types";
+import {ADD_CUSTOMER, ADD_OFFICE, ADD_SUBJECT, ADD_CONTACT, ADD_OUTCOME} from "../constants/action-types";
 
 
 export function addCustomer(payload) {
@@ -15,6 +15,10 @@ export function addSubject(payload) {
 
 export function addContact(payload) {
   return { type: ADD_CONTACT, payload };
+}
+
+export function addOutcome(payload) {
+  return { type: ADD_OUTCOME, payload };
 }
 
 export function getOffices() {
@@ -39,4 +43,8 @@ export function getContacts() {
 
 export function getAppointments() {
   return { type: "APPOINTMENTS_REQUESTED" };
+}
+
+export function getOutcomes() {
+  return { type: "OUTCOMES_REQUESTED" };
 }

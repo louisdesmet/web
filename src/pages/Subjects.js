@@ -1,12 +1,14 @@
 import React, {useState} from "react";
-import {useSelector} from "react-redux";
+import {connect, useSelector} from "react-redux";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Link} from "react-router-dom";
 import '../assets/css/pages/Subjects.scss'
 import TopNav from "../components/includes/TopNav";
-import Sidebar from "../components/includes/Sidebar";
-export default function Subjects(props) {
+import AdminSidebar from "../components/includes/AdminSidebar";
+import {addSubject} from '../redux/actions/';
+
+const Subjects = (props) => {
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -37,19 +39,15 @@ export default function Subjects(props) {
   </div>) : null;
 
   function submitSubject() {
-    fetch('http://api.test/api/subjects', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("tokens")).access_token,
-      },
-      body: JSON.stringify({
-        name: name,
-        description: description,
-        category: (category ? category : categories.data[0].id)
-      })
-    })
+    const data = {
+      name: name,
+      description: description,
+      category: (category ? category : categories.data[0].id)
+    };
+    props.dispatch({
+      type:'ADD_SUBJECT',
+      data
+    });
   }
 
   function submitCategory() {
@@ -68,7 +66,7 @@ export default function Subjects(props) {
 
   return(
     <div className="organization">
-      <Sidebar/>
+      <AdminSidebar/>
       <div className="main">
         <TopNav/>
         <div className="subjects-wrapper">
@@ -117,4 +115,10 @@ export default function Subjects(props) {
 
     </div>
   );
-}
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatch
+});
+
+export default connect(null, mapDispatchToProps)(Subjects);

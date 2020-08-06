@@ -1,0 +1,59 @@
+.admin-sidebar {
+  flex: 0 0 250px;
+  border-right: 1px solid lightgrey;
+  .admin-sidebar-head {
+    display: flex;
+    border: none;
+    height: 60px;
+
+
+    .logo {
+      flex: 0 0 60px;
+      border-right: 1px solid lightgrey;
+      img {
+        width: 40px;
+        padding: 10px 0 0 10px;
+      }
+    }
+    div {
+      flex: 1;
+      .admin-sidebar-head-role {
+        color: #9B9B9B;
+        font-weight: bold;
+        letter-spacing: 1px;
+        padding: 11px 0;
+        font-size: 0.9em;
+        margin: 0 0 0 9px;
+      }
+      .admin-sidebar-head-enterprise {
+        font-size: 0.8em;
+        margin: 0 0 0 9px;
+        font-weight: bold;
+      }
+    }
+  }
+  ul {
+    .admin-sidebar-link {
+      display: block;
+      border-left: 5px solid transparent;
+      font-size: 0.97em;
+      a {
+        display: block;
+        padding: 15px 5px;
+        text-decoration: none;
+        color: black;
+      }
+    }
+    .admin-sidebar-link:hover {
+      border-left: 5px solid #2C3E50;
+      background: #F7F7F9;
+    }
+    .admin-sidebar-category {
+      padding: 13px 10px;
+      font-weight: bold;
+      font-size: 0.9em;
+      border-bottom: 1px solid lightgrey;
+      border-top: 1px solid lightgrey;
+    }
+  }
+}

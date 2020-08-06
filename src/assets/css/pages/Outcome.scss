@@ -1,0 +1,37 @@
+.organization {
+  display: flex;
+  height: 100%;
+  .main {
+    flex-grow: 1;
+    .outcome-wrapper {
+      height: 100%;
+      .title {
+        padding: 30px;
+        font-weight: normal;
+        font-size: 1.6em;
+        border-bottom: 1px solid lightgrey;
+        color: #585858;
+      }
+      .wrapper {
+        display: flex;
+        height: 100%;
+        .general {
+          width: 100%;
+          label {
+            display: block;
+            margin: 0 0 0 2%;
+            padding: 12px 0 8px 0;
+            font-size: 0.9em;
+          }
+          input {
+            display: block;
+            box-sizing: border-box;
+            width: 96%;
+            padding: 10px 7px;
+            margin: 0 2%;
+          }
+        }
+      }
+    }
+  }
+}

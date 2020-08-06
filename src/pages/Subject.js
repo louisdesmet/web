@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Link, useParams} from "react-router-dom";
 import '../assets/css/pages/Subject.scss';
 import TopNav from "../components/includes/TopNav";
-import Sidebar from "../components/includes/Sidebar";
+import AdminSidebar from "../components/includes/AdminSidebar";
 
 export default function Subject(props) {
   const subjects = useSelector(state => state.remoteSubjects);
@@ -15,7 +15,7 @@ export default function Subject(props) {
   const categoryList = categories.data ? categories.data.map(category => <option key={category.id} value={category.id}>{category.name}</option>) : null;
   return(
     <div className="organization">
-      <Sidebar/>
+      <AdminSidebar/>
       <div className="main">
         <TopNav/>
         <div className="subject-wrapper">

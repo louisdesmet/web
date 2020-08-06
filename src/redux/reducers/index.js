@@ -33,7 +33,8 @@ const initialState = {
   customers: [],
   remoteCustomers: [],
   contacts: [],
-  remoteContacts: []
+  remoteContacts: [],
+  remoteOutcomes: []
 };
 function rootReducer(state = initialState, action) {
   if (action.type === ADD_CUSTOMER) {
@@ -54,10 +55,26 @@ function rootReducer(state = initialState, action) {
     });
   }
   if (action.type === ADD_SUBJECT) {
+    const data = {
+      name: action.data.name,
+      description: action.data.description,
+      category: action.data.category
+    };
+    fetch('http://api.test/api/subjects', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("tokens")).access_token,
+      },
+      body: JSON.stringify(data)
+    });
     return Object.assign({}, state, {
       subject: {
-        id: action.payload.id,
-        name: action.payload.name
+        id: action.data.id,
+        name: action.data.name,
+        description: action.data.description,
+        category: action.data.category
       }
     });
   }
@@ -113,6 +130,12 @@ function rootReducer(state = initialState, action) {
     return Object.assign({}, state, {
       remoteAppointments: action.payload,
       events: events
+    });
+  }
+
+  if (action.type === "OUTCOMES_LOADED") {
+    return Object.assign({}, state, {
+        remoteOutcomes: action.payload
     });
   }
   return state;

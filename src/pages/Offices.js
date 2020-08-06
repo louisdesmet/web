@@ -5,7 +5,7 @@ import {faBuilding} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import '../assets/css/pages/Offices.scss'
 import TopNav from "../components/includes/TopNav";
-import Sidebar from "../components/includes/Sidebar";
+import AdminSidebar from "../components/includes/AdminSidebar";
 
 export default function Offices(props) {
 
@@ -38,7 +38,7 @@ export default function Offices(props) {
 
   return(
     <div className="organization">
-      <Sidebar/>
+      <AdminSidebar/>
       <div className="main">
         <TopNav/>
         <div className="offices-wrapper">

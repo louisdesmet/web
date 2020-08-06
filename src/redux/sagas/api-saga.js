@@ -7,6 +7,7 @@ export default function* watcherSaga() {
   yield takeEvery("CUSTOMERS_REQUESTED", customersWorkerSaga);
   yield takeEvery("CONTACTS_REQUESTED", contactsWorkerSaga);
   yield takeEvery("APPOINTMENTS_REQUESTED", appointmentsWorkerSaga);
+  yield takeEvery("OUTCOMES_REQUESTED", outcomesWorkerSaga);
 }
 
 function* officesWorkerSaga() {
@@ -61,6 +62,15 @@ function* appointmentsWorkerSaga() {
   } catch (e) {
     yield put({ type: "API_ERRORED", payload: e });
   }
+}
+
+function* outcomesWorkerSaga() {
+    try {
+        const payload = yield call(getOutcomes);
+        yield put({ type: "OUTCOMES_LOADED", payload });
+    } catch (e) {
+        yield put({ type: "API_ERRORED", payload: e });
+    }
 }
 
 function getOffices() {
@@ -127,4 +137,15 @@ function getAppointments() {
   }).then(function(response) {
     return response.json();
   });
+}
+
+function getOutcomes() {
+    return fetch('http://api.test/api/outcomes', {
+        headers: new Headers({
+            'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("tokens")).access_token,
+            'Accept': 'application/json'
+        })
+    }).then(function(response) {
+        return response.json();
+    });
 }

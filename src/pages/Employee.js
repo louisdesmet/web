@@ -1,11 +1,11 @@
 import React from "react";
 import {useParams} from "react-router-dom";
 import TopNav from "../components/includes/TopNav";
-import Sidebar from "../components/includes/Sidebar";
 import {faUser, faBuilding, faSitemap, faCog} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import '../assets/css/pages/Employee.scss';
 import {useSelector} from "react-redux";
+import AdminSidebar from "../components/includes/AdminSidebar";
 
 export default function Employee(props) {
 
@@ -37,8 +37,7 @@ export default function Employee(props) {
 
   return(
     <div className="organization">
-    <Sidebar/>
-
+      <AdminSidebar/>
       <div className="main">
         <TopNav/>
         <div className="employee-wrapper">
